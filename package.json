@@ -1,0 +1,17 @@
+{
+  "name": "notifications",
+  "version": "1.0.0",
+  "description": "Notification middleware for redux",
+  "main": "lib/index.js",
+  "author": "Anoop Varghese",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.18.0",
+    "babel-loader": "^6.2.7",
+    "rimraf": "^2.5.4"
+  },
+  "peerDependencies": {
+    "redux": ">1.0.0"
+  }
+}
