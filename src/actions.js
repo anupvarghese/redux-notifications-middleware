@@ -7,7 +7,7 @@ const showNotification = ({ payload, delay = 1000, id }) => ({
   id,
 });
 
-const hideNotification = ({ id }) => ({
+const hideNotification = id => ({
   type: C.HIDE_NOTIFICATION,
   id,
 });

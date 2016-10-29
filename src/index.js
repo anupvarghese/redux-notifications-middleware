@@ -10,9 +10,7 @@ const notify = events => ({ dispatch }) => next => (action) => {
       id,
     }));
     setTimeout(() => {
-      dispatch(hideNotification({
-        id,
-      }));
+      dispatch(hideNotification(id));
     }, delay);
   }
   return next(action);

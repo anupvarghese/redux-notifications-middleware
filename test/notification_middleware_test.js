@@ -1,36 +1,81 @@
 import { expect } from 'chai';
-import { stub } from 'sinon';
+import sinon from 'sinon';
 import notifyMiddleware from '../src';
+import createMockStore from './mockstore/create_mock_store';
+import { showNotification, hideNotification } from '../src/actions';
 
 describe('Notification middleware test', () => {
-  let dispatch;
-  let next;
-  let store;
+  let mockStore;
+  let clock;
+  let id;
+  const events = ['TESTING_NOTIFICATION'];
   beforeEach(() => {
-    dispatch = stub();
-    next = stub();
-    store = {
-      dispatch,
-    };
-  });
-  it('should dispatch NOTIFICATION action', (done) => {
-    const events = ['TESTING_NOTIFICATION'];
-    const action = { type: 'TESTING_NOTIFICATION', payload: 'abc', delay: 1500 };
-    const expectedAction = { type: 'NOTIFICATION', payload: 'abc', delay: 1500 };
-    notifyMiddleware(events)(store)(next)(action);
-    expect(dispatch.callCount).to.equal(1);
-    expect(dispatch.args[0][0]).to.deep.equal(expectedAction);
-    expect(next.callCount).to.equal(0);
-    done();
+    clock = sinon.useFakeTimers(new Date(2015, 10, 1).getTime());
+    id = new Date().getTime();
+    mockStore = mockDispatch =>
+    createMockStore(
+      [notifyMiddleware(events)],
+      mockDispatch
+    );
   });
 
-  it('should not dispatch NOTIFICATION action', (done) => {
-    const events = ['SOME_OTHER_ACTION'];
-    const action = { type: 'TESTING_NOTIFICATION', payload: 'abc', delay: 1500 };
-    notifyMiddleware(events)(store)(next)(action);
-    expect(dispatch.callCount).to.equal(0);
-    expect(next.callCount).to.equal(1);
-    expect(next.args[0][0]).to.deep.equal(action);
-    done();
+  afterEach(() => {
+    clock.restore();
+  });
+
+  it('returns a function to handle next', () => {
+    const mockDispatch = () => {};
+    const nextHandler = notifyMiddleware()(mockDispatch);
+    expect(typeof nextHandler).to.equal('function');
+  });
+
+  it('should dispatch NOTIFICATION action', () => {
+    const originalAction = { type: 'TESTING_NOTIFICATION', payload: 'abc', delay: 1500 };
+    const expectedActions = [
+      showNotification({
+        payload: 'abc',
+        delay: 1500,
+        id,
+      }),
+      originalAction,
+      hideNotification(id),
+    ];
+    const mockDispatch = (action) => {
+      const expectedAction = expectedActions.shift();
+      expect(action).to.deep.equal(expectedAction);
+      return action;
+    };
+    mockStore(mockDispatch).dispatch(originalAction);
+    clock.tick(1510);
+    expect(expectedActions.length).to.equal(0);
+  });
+
+  it('should dispatch NOTIFICATION action with default delay', () => {
+    const originalAction = { type: 'TESTING_NOTIFICATION', payload: 'abc' };
+    const expectedActions = [
+      showNotification({
+        payload: 'abc',
+        id,
+      }),
+      originalAction,
+      hideNotification(id),
+    ];
+    const mockDispatch = (action) => {
+      const expectedAction = expectedActions.shift();
+      expect(action).to.deep.equal(expectedAction);
+      return action;
+    };
+    mockStore(mockDispatch).dispatch(originalAction);
+    clock.tick(1510);
+    expect(expectedActions.length).to.equal(0);
+  });
+
+  it('should not dispatch NOTIFICATION action', () => {
+    const originalAction = { type: 'SOME_OTHER_ACTION', payload: 'abc', delay: 1500 };
+    const mockDispatch = (action) => {
+      expect(action).to.deep.equal(originalAction);
+      return action;
+    };
+    mockStore(mockDispatch).dispatch(originalAction);
   });
 });
