@@ -1,5 +1,5 @@
 {
-  "name": "notifications",
+  "name": "redux-notifications-middleware",
   "version": "1.0.0",
   "description": "Notification middleware for redux",
   "main": "lib/index.js",
