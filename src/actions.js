@@ -1,6 +1,6 @@
 import C from './constants';
 
-const showNotification = ({ payload, delay, id }) => ({
+const showNotification = ({ payload, delay = 1000, id }) => ({
   type: C.SHOW_NOTIFICATION,
   payload,
   delay,

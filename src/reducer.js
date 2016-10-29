@@ -3,10 +3,11 @@ import C from './constants';
 export default(state = [], action) => {
   switch (action.type) {
     case C.SHOW_NOTIFICATION: {
-      return [...state, action.payload];
+      const { payload, id, delay } = action;
+      return [...state, { payload, delay, id }];
     }
     case C.HIDE_NOTIFICATION: {
-      return [...state].filter(n => n.id !== action.payload.id);
+      return [...state].filter(n => n.id !== action.id);
     }
     default:
       return state;

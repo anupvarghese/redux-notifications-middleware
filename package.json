@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "test": "nyc npm run spec",
-    "spec": "./node_modules/.bin/_mocha -R spec ./test/test_helper.js --recursive test/**/*",
+    "spec": "./node_modules/.bin/_mocha -R spec ./test/test_helper.js --recursive test/**",
     "clean": "rimraf lib dist coverage",
     "lint": "eslint src test",
     "build": "babel src --out-dir lib",
