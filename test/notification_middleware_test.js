@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
-import notifyMiddleware from '../src';
+import notifyMiddleware from '../src/middleware';
 import createMockStore from './mockstore/create_mock_store';
 import { showNotification, hideNotification } from '../src/actions';
 
