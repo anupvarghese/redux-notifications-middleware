@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/anupvarghese/redux-notifications-middleware.svg?branch=master)](https://travis-ci.org/anupvarghese/redux-notifications-middleware)
+[![npm version](https://badge.fury.io/js/redux-notifications-middleware.svg)](https://badge.fury.io/js/redux-notifications-middleware)
+[![Coverage Status](https://coveralls.io/repos/github/anupvarghese/redux-notifications-middleware/badge.svg?branch=master)](https://coveralls.io/github/anupvarghese/redux-notifications-middleware?branch=master)
+
 ## Notification middleware for redux
 
 A simple middleware for handling notifications using redux store
