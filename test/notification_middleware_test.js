@@ -6,16 +6,12 @@ describe('Notification middleware test', () => {
   let dispatch;
   let next;
   let store;
-  let notify;
   beforeEach(() => {
     dispatch = stub();
     next = stub();
     store = {
       dispatch,
     };
-  });
-  it('should be a function', () => {
-    expect(notify).to.be.function;
   });
   it('should dispatch NOTIFICATION action', (done) => {
     const events = ['TESTING_NOTIFICATION'];
