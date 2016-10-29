@@ -1,12 +1,19 @@
+import { showNotification, hideNotification } from './actions';
+
 const notify = events => ({ dispatch }) => next => (action) => {
   if (events.indexOf(action.type) !== -1) {
     const { payload, delay = 1000 } = action;
-    dispatch({
-      type: 'NOTIFICATION',
+    const id = new Date().getTime();
+    dispatch(showNotification({
       payload,
       delay,
-    });
-    return null;
+      id,
+    }));
+    setTimeout(() => {
+      dispatch(hideNotification({
+        id,
+      }));
+    }, delay);
   }
   return next(action);
 };
