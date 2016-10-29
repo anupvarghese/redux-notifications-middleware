@@ -1,6 +1,6 @@
 {
   "name": "redux-notifications-middleware",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Notification middleware for redux",
   "main": "lib/index.js",
   "author": "Anoop Varghese",
@@ -13,6 +13,11 @@
     "build": "babel src --out-dir lib",
     "prepublish": "npm run clean && npm run build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anupvarghese/redux-notifications-middleware.git"
+  },
+  "homepage": "https://github.com/anupvarghese/redux-notifications-middleware.git",
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-cli": "^6.18.0",
