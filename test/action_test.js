@@ -8,27 +8,27 @@ import C from '../src/constants';
 describe('notifications action', () => {
   it('should call showNotification', () => {
     const expectedData = {
-      payload: 'Hi',
-      delay: 2000,
+      notificationPayload: 'Hi',
+      notificationDelay: 2000,
       id: '1234',
       type: C.SHOW_NOTIFICATION,
     };
     expect(showNotification({
-      payload: 'Hi',
-      delay: 2000,
+      notificationPayload: 'Hi',
+      notificationDelay: 2000,
       id: '1234',
     })).to.deep.equal(expectedData);
   });
 
   it('should call showNotification with default delay', () => {
     const expectedData = {
-      payload: 'Hi',
-      delay: 1000,
+      notificationPayload: 'Hi',
+      notificationDelay: 1000,
       id: '1234',
       type: C.SHOW_NOTIFICATION,
     };
     expect(showNotification({
-      payload: 'Hi',
+      notificationPayload: 'Hi',
       id: '1234',
     })).to.deep.equal(expectedData);
   });

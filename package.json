@@ -1,6 +1,6 @@
 {
   "name": "redux-notifications-middleware",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Notification middleware for redux",
   "main": "lib/index.js",
   "author": "Anoop Varghese",

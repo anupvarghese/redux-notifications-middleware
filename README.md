@@ -55,8 +55,8 @@ For eg:-
 ```
 {
   type: 'FETCH_PRODUCT_SUCCESS',
-  payload: 'Successfully fetched products',
-  delay: 2000,
+  notificationPayload: 'Successfully fetched products',
+  notificationDelay: 2000,
 }
 ```
 

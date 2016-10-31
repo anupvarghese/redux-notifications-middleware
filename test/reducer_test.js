@@ -9,8 +9,8 @@ describe('notifications reducer', () => {
 
   it(`should handle ${C.SHOW_NOTIFICATION}`, () => {
     const expectedData = [{
-      payload: 'Hi',
-      delay: 2000,
+      notificationPayload: 'Hi',
+      notificationDelay: 2000,
       id: '1234',
     }];
     const action = Object.assign({}, expectedData[0], { type: C.SHOW_NOTIFICATION });
@@ -19,8 +19,8 @@ describe('notifications reducer', () => {
 
   it(`should handle ${C.HIDE_NOTIFICATION}`, () => {
     const initialData = [{
-      payload: 'Hi',
-      delay: 2000,
+      notificationPayload: 'Hi',
+      notificationDelay: 2000,
       id: '1234',
     }];
     expect(notificationReducer(initialData, { type: C.HIDE_NOTIFICATION, id: '1234' })).to.deep.equal([]);

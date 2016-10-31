@@ -30,11 +30,11 @@ describe('Notification middleware test', () => {
   });
 
   it('should dispatch NOTIFICATION action', () => {
-    const originalAction = { type: 'TESTING_NOTIFICATION', payload: 'abc', delay: 1500 };
+    const originalAction = { type: 'TESTING_NOTIFICATION', notificationPayload: 'abc', notificationDelay: 1500 };
     const expectedActions = [
       showNotification({
-        payload: 'abc',
-        delay: 1500,
+        notificationPayload: 'abc',
+        notificationDelay: 1500,
         id,
       }),
       originalAction,
@@ -50,11 +50,11 @@ describe('Notification middleware test', () => {
     expect(expectedActions.length).to.equal(0);
   });
 
-  it('should dispatch NOTIFICATION action with default delay', () => {
-    const originalAction = { type: 'TESTING_NOTIFICATION', payload: 'abc' };
+  it('should dispatch NOTIFICATION action with default notificationDelay', () => {
+    const originalAction = { type: 'TESTING_NOTIFICATION', notificationPayload: 'abc' };
     const expectedActions = [
       showNotification({
-        payload: 'abc',
+        notificationPayload: 'abc',
         id,
       }),
       originalAction,
@@ -71,7 +71,7 @@ describe('Notification middleware test', () => {
   });
 
   it('should not dispatch NOTIFICATION action', () => {
-    const originalAction = { type: 'SOME_OTHER_ACTION', payload: 'abc', delay: 1500 };
+    const originalAction = { type: 'SOME_OTHER_ACTION', notificationPayload: 'abc', notificationDelay: 1500 };
     const mockDispatch = (action) => {
       expect(action).to.deep.equal(originalAction);
       return action;
