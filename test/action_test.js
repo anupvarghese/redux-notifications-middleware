@@ -11,12 +11,14 @@ describe('notifications action', () => {
       notificationPayload: 'Hi',
       notificationDelay: 2000,
       id: '1234',
+      notificationType: 'success',
       type: C.SHOW_NOTIFICATION,
     };
     expect(showNotification({
       notificationPayload: 'Hi',
       notificationDelay: 2000,
       id: '1234',
+      notificationType: 'success',
     })).to.deep.equal(expectedData);
   });
 
@@ -25,11 +27,13 @@ describe('notifications action', () => {
       notificationPayload: 'Hi',
       notificationDelay: 1000,
       id: '1234',
+      notificationType: 'success',
       type: C.SHOW_NOTIFICATION,
     };
     expect(showNotification({
       notificationPayload: 'Hi',
       id: '1234',
+      notificationType: 'success',
     })).to.deep.equal(expectedData);
   });
 
