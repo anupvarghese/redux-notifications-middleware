@@ -1,5 +1,5 @@
 {
-  "name": "notifications-widget",
+  "name": "@ordermentum/notifications-widget",
   "version": "1.0.7",
   "description": "Notification middleware for redux",
   "main": "lib/index.js",
