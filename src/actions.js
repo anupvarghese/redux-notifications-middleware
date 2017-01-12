@@ -18,7 +18,13 @@ const hideNotification = id => ({
   id,
 });
 
+const removeNotification = id => ({
+  type: C.REMOVE_NOTIFICATION,
+  id,
+});
+
 export {
   showNotification,
   hideNotification,
+  removeNotification,
 };

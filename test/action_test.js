@@ -2,6 +2,7 @@ import { expect } from 'chai';
 import {
   showNotification,
   hideNotification,
+  removeNotification,
 } from '../src/actions';
 import C from '../src/constants';
 
@@ -43,5 +44,13 @@ describe('notifications action', () => {
       id: '123',
     };
     expect(hideNotification('123')).to.deep.equal(expectedData);
+  });
+
+  it('should call removeNotification', () => {
+    const expectedData = {
+      type: C.REMOVE_NOTIFICATION,
+      id: '123',
+    };
+    expect(removeNotification('123')).to.deep.equal(expectedData);
   });
 });
