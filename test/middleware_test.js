@@ -2,7 +2,10 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import notifyMiddleware from '../src/middleware';
 import createMockStore from './mockstore/create_mock_store';
-import { showNotification, hideNotification } from '../src/actions';
+import {
+  showNotification, hideNotification, removeNotification,
+  } from '../src/actions';
+import C from '../src/constants';
 
 describe('Notification middleware test', () => {
   let mockStore;
@@ -59,6 +62,7 @@ describe('Notification middleware test', () => {
       }),
       originalAction,
       hideNotification(id),
+      removeNotification(id),
     ];
     const mockDispatch = (action) => {
       const expectedAction = expectedActions.shift();
@@ -66,7 +70,11 @@ describe('Notification middleware test', () => {
       return action;
     };
     mockStore(mockDispatch).dispatch(originalAction);
-    clock.tick(1510);
+    expect(expectedActions[0].type).to.equal(C.HIDE_NOTIFICATION);
+    clock.tick(1010);
+    expect(expectedActions.length).to.equal(1);
+    expect(expectedActions[0].type).to.equal(C.REMOVE_NOTIFICATION);
+    clock.tick(160);
     expect(expectedActions.length).to.equal(0);
   });
 
