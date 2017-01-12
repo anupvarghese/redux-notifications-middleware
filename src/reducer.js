@@ -4,13 +4,13 @@ export default(state = [], action) => {
   switch (action.type) {
     case C.SHOW_NOTIFICATION: {
       const { notificationPayload, id, notificationDelay, notificationType } = action;
-      return [{
+      return [...state, {
         id,
         notificationPayload,
         notificationDelay,
         notificationType,
         hidden: 'show',
-      }, ...state];
+      }];
     }
     case C.HIDE_NOTIFICATION: {
       const notification = state.find(n => n.id === action.id);
@@ -20,7 +20,7 @@ export default(state = [], action) => {
         n.hidden === 'show' ? Object.assign({}, n, { hidden: 'shown' }) : n
       );
       return [notification, ...withoutNotification].sort((prev, next) =>
-        next.id - prev.id);
+        prev.id - next.id);
     }
     case C.REMOVE_NOTIFICATION: {
       return state.filter(n => n.id !== action.id);

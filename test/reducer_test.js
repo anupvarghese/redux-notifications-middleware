@@ -19,7 +19,7 @@ describe('notifications reducer', () => {
     expect(notificationReducer([], action)).to.deep.equal(expectedData);
   });
 
-  it(`adds the new notification to the start of the array for ${C.SHOW_NOTIFICATION}`, () => {
+  it(`adds the new notification to the end of the array for ${C.SHOW_NOTIFICATION}`, () => {
     const expectedData = [{
       notificationPayload: 'Hi',
       notificationDelay: 2000,
@@ -33,8 +33,8 @@ describe('notifications reducer', () => {
       hidden: 'show',
       notificationType: 'success',
     }];
-    const action = Object.assign({}, expectedData[0], { type: C.SHOW_NOTIFICATION });
-    expect(notificationReducer([expectedData[1]], action)).to.deep.equal(expectedData);
+    const action = Object.assign({}, expectedData[1], { type: C.SHOW_NOTIFICATION });
+    expect(notificationReducer([expectedData[0]], action)).to.deep.equal(expectedData);
   });
 
   describe(`for ${C.HIDE_NOTIFICATION}`, () => {
@@ -73,14 +73,14 @@ describe('notifications reducer', () => {
       const expectedData = [{
         notificationPayload: 'Hi',
         notificationDelay: 2000,
-        id: '4567',
-        hidden: 'shown',
+        id: '1234',
+        hidden: 'hide',
         notificationType: 'success',
       }, {
         notificationPayload: 'Hi',
         notificationDelay: 2000,
-        id: '1234',
-        hidden: 'hide',
+        id: '4567',
+        hidden: 'shown',
         notificationType: 'success',
       }];
       const action = Object.assign({}, expectedData[1], { type: C.HIDE_NOTIFICATION, id: '1234' });
