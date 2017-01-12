@@ -1,11 +1,10 @@
 {
   "name": "notifications-widget",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Notification middleware for redux",
   "main": "lib/index.js",
   "author": "Ordermentum",
   "license": "MIT",
-  "private": true,
   "scripts": {
     "test": "nyc npm run spec",
     "spec": "./node_modules/.bin/_mocha -R spec ./test/test_helper.js --recursive test/**",
