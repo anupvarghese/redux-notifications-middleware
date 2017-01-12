@@ -41,5 +41,8 @@
   },
   "peerDependencies": {
     "redux": ">1.0.0"
+  },
+  "dependencies": {
+    "babel-preset-react": "^6.16.0"
   }
 }
