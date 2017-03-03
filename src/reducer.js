@@ -3,12 +3,13 @@ import C from './constants';
 export default(state = [], action) => {
   switch (action.type) {
     case C.SHOW_NOTIFICATION: {
-      const { notificationPayload, id, notificationDelay, notificationType } = action;
+      const { notificationPayload, id, notificationDelay, notificationType, isDownloadable } = action;
       return [...state, {
         id,
         notificationPayload,
         notificationDelay,
         notificationType,
+        isDownloadable,
         hidden: 'show',
       }];
     }
