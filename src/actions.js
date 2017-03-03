@@ -3,6 +3,7 @@ import C from './constants';
 const showNotification = ({
   notificationPayload,
   notificationDelay = 1000,
+  isDownloadable = false,
   id,
   notificationType,
 }) => ({
@@ -10,6 +11,7 @@ const showNotification = ({
   notificationPayload,
   notificationDelay,
   notificationType,
+  isDownloadable,
   id,
 });
 
