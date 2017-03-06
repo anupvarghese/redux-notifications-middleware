@@ -6,14 +6,14 @@ const notify = events => ({ dispatch }) => next => (action) => {
       notificationPayload,
       notificationDelay = 1000,
       notificationType,
-      isDownloadable = false,
+      permalink = null,
       animationDelay = 150 } = action;
     const id = new Date().getTime();
     dispatch(showNotification({
       notificationPayload,
       notificationDelay,
       notificationType,
-      isDownloadable,
+      permalink,
       id,
     }));
     setTimeout(() => {
