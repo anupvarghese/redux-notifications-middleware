@@ -1,6 +1,6 @@
 {
   "name": "@ordermentum/notifications-widget",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Notification middleware for redux",
   "main": "lib/index.js",
   "author": "Ordermentum",
