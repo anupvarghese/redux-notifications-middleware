@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const reactPropTypes = {
   details: PropTypes.object.isRequired,
@@ -21,9 +22,10 @@ export const Notification = ({
       <div className={`${classPrefix}notification-text ns-box-inner`}>
         {details.notificationPayload}
       </div>
-      <span className={`${classPrefix}notification-close ns-close`} onClick={handleHide}>
-      </span>
+      <span className={`${classPrefix}notification-close ns-close`} onClick={handleHide} />
     </div>
   );
 
 Notification.propTypes = reactPropTypes;
+
+export default Notification;
